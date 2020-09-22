@@ -92,6 +92,9 @@ func main() {
 	}
 
 	http.HandleFunc("/api/v1/cfssl/authsign", dispatchRequest)
+	http.HandleFunc("/api/v1/cfssl/healthcheck", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(204)
+	})
 	http.Handle("/api/v1/cfssl/info", infoHandler)
 	http.Handle("/api/v1/cfssl/metrics", metrics)
 
